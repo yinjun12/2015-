@@ -1,0 +1,21 @@
+int getMaxSuccessionLength(string query, string text)
+{
+	int ret = 0;
+	for (int i = 1; i <= query.size(); i++)//子序列的长度，从1开始到最大长度
+	{
+		bool flag = true;
+		for (int j = 0; j + i <= query.size(); j++)
+		{
+			string stemp = query.substr(j, i);//依次从query中找到长度为i的连续子序列
+			int itemp = text.find(stemp);
+			if (itemp != -1)//若出现，则此循环结束，
+			{
+				flag = false;
+				ret = i;
+				break;
+			}
+		}
+		if (flag) break;//一次循环后没有找到相同，则此时ret已经保存最大
+	}
+	return ret;
+}
