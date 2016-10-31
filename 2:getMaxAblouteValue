@@ -1,0 +1,23 @@
+getMaxAblouteValue
+在一颗树上，返回节点值差的绝对值最大的值
+struct TreeNode
+{
+    int val;
+    struct TreeNode *left;
+    struct TreeNode *right;
+}
+int min=INT_MAX;
+int max=INT_MIN;
+int getMaxAblouteValue(TreeNode *root)
+{
+    if(!root) return min;
+    if(root->val<min)
+      min=root->val;
+    if(root->val>max)
+      max=root->val;
+     getMaxAblouteValue(root->left);
+     getMaxAblouteValue(root->right);
+     return max>min?:max-min,min-max;
+     
+    
+}
